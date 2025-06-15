@@ -1,0 +1,142 @@
+body{
+    font-family: inter;
+    margin: 0;
+    background: rgba(254, 251, 251, 1);
+}
+header{
+    background-color: rgba(4, 201, 244, 1);
+    padding: 10px;
+    height: 43px;
+}
+
+h1{
+    font-size: 14px;
+    font-family: inter;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+}
+.container{
+    display: flex;
+    margin: 20px;
+    width: 454px;
+    height: 223px;
+}
+.formulario{
+    background-color: rgba(217, 217, 217, 1);
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formulario input{
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+}
+.button{
+    display: flex;
+    flex-direction: column;
+    gap: 11.3px;
+    margin-left: 20px;   
+}
+.incluir{
+    padding: 10px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-family: inter;
+    border: none;
+    background-color: rgba(6, 134, 34, 1);
+    width: 131px;
+    height: 35px;
+
+}
+.editar{
+    padding: 10px;
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    background-color: rgba(253, 152, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-family: inter;
+}
+.salvar{
+    padding: 10px;
+    color: white;
+    border: none;
+    background-color: rgba(4, 201, 244, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-family: inter;
+}
+.cancelar{
+    padding: 10px;
+    color: rgba(4, 201, 244, 1);
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+}
+.excluir{
+    padding: 10px;
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    background-color: rgba(244, 4, 4, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-family: inter;
+}
+.navegacao button{
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 84px;
+    height: 48px;
+}
+.navegacao{
+    display: flex;
+    gap: 10px;
+    margin: 25px;
+}
+.preencha{
+    display: flex;
+    gap: 10px;
+}
+.preencha input{
+    flex: 1;
+}
+footer{
+    background-color: rgba(255, 255, 255, 1);
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    font-size: 12px;
+    font-family: inter;
+    color: rgba(4, 201, 244, 1);
+}
+.nomes{
+    width: 211px;
+    height: 62px;
+    background-color: background-color: rgba(255, 255, 255, 1);
+}
+.sobrenomes{
+    width: 211px;
+    height: 62px;
+    background-color: rgba(255, 255, 255, 1);
+    top: 89px;
+    left: 236px;
+}
+.enderecos{
+    width: 436px;
+    height: 59px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.telefone{
+    width: 218px;
+    height: 53px;
+    background-color: rgba(255, 255, 255, 1);
+}
