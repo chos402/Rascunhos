@@ -35,5 +35,66 @@
   <footer>
     <h2>AGENDA DE CONTATOS</h2>
   </footer>
+      <script>
+    const nomeInput = document.querySelector(".nomes");
+    const sobrenomeInput = document.querySelector(".sobrenomes");
+    const enderecoInput = document.querySelector(".enderecos");
+    const telefoneInput = document.querySelector(".telefones");
+
+    const btnIncluir = document.querySelector(".incluir");
+    const btnEditar = document.querySelector(".editar");
+    const btnSalvar = document.querySelector(".salvar");
+    const btnCancelar = document.querySelector(".cancelar");
+    const btnExcluir = document.querySelector(".excluir");
+
+    let contato = {};
+
+    btnIncluir.addEventListener("click", () => {
+      contato = {
+        nome: nomeInput.value,
+        sobrenome: sobrenomeInput.value,
+        endereco: enderecoInput.value,
+        telefone: telefoneInput.value
+      };
+      alert("Contato incluído:\n" + JSON.stringify(contato, null, 2));
+    });
+
+    btnEditar.addEventListener("click", () => {
+      nomeInput.disabled = false;
+      sobrenomeInput.disabled = false;
+      enderecoInput.disabled = false;
+      telefoneInput.disabled = false;
+      alert("Campos liberados para edição.");
+    });
+
+    btnSalvar.addEventListener("click", () => {
+      contato = {
+        nome: nomeInput.value,
+        sobrenome: sobrenomeInput.value,
+        endereco: enderecoInput.value,
+        telefone: telefoneInput.value
+      };
+      alert("Alterações salvas:\n" + JSON.stringify(contato, null, 2));
+    });
+
+    btnCancelar.addEventListener("click", () => {
+      nomeInput.value = "";
+      sobrenomeInput.value = "";
+      enderecoInput.value = "";
+      telefoneInput.value = "";
+      alert("Edição cancelada.");
+    });
+
+    btnExcluir.addEventListener("click", () => {
+      if (confirm("Deseja realmente excluir o contato?")) {
+        nomeInput.value = "";
+        sobrenomeInput.value = "";
+        enderecoInput.value = "";
+        telefoneInput.value = "";
+        contato = {};
+        alert("Contato excluído.");
+      }
+    });
+  </script>
   </body>
 </html>
