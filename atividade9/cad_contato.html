@@ -1,15 +1,16 @@
-<html lang="en">
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Contato</title>
-    <link rel="stylesheet" href="cad_contato.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Contato</title>
+  <link rel="stylesheet" href="cad_contato.css">
 </head>
 <body>
-    <header>
-        <h1>Cadastro de Contato</h1>
-    </header>
-   <div class="container">
+  <header>
+    <h1>Cadastro de Contato</h1>
+  </header>
+  
+  <div class="container">
     <div class="formulario">
       <div class="preencha">
         <input class="nomes" type="text" placeholder="Nome"/>
@@ -18,6 +19,7 @@
       <input class="enderecos" type="text" placeholder="Endereço"/>
       <input class="telefones" type="text" placeholder="Telefone"/>
     </div>
+    
     <div class="button">
       <button class="incluir">INCLUIR</button>
       <button class="editar">EDITAR</button>
@@ -26,16 +28,19 @@
       <button class="excluir">EXCLUIR</button>
     </div>
   </div>
-   <div class="navegacao">
-    <button>|<</button>
-    <button><</button>
-    <button>></button>
-    <button>>|</button>
+
+  <div class="navegacao">
+    <button class="primeiro">|<</button>
+    <button class="anterior"><</button>
+    <button class="proximo">></button>
+    <button class="ultimo">>|</button>
   </div>
+
   <footer>
     <h2>AGENDA DE CONTATOS</h2>
   </footer>
-      <script>
+
+  <script>
     const nomeInput = document.querySelector(".nomes");
     const sobrenomeInput = document.querySelector(".sobrenomes");
     const enderecoInput = document.querySelector(".enderecos");
@@ -47,16 +52,38 @@
     const btnCancelar = document.querySelector(".cancelar");
     const btnExcluir = document.querySelector(".excluir");
 
-    let contato = {};
+    const btnPrimeiro = document.querySelector(".primeiro");
+    const btnAnterior = document.querySelector(".anterior");
+    const btnProximo = document.querySelector(".proximo");
+    const btnUltimo = document.querySelector(".ultimo");
+
+    let contatos = [];
+    let indiceAtual = -1;
+
+    function preencherFormulario(contato) {
+      nomeInput.value = contato.nome;
+      sobrenomeInput.value = contato.sobrenome;
+      enderecoInput.value = contato.endereco;
+      telefoneInput.value = contato.telefone;
+    }
+
+    function limparFormulario() {
+      nomeInput.value = "";
+      sobrenomeInput.value = "";
+      enderecoInput.value = "";
+      telefoneInput.value = "";
+    }
 
     btnIncluir.addEventListener("click", () => {
-      contato = {
+      const novoContato = {
         nome: nomeInput.value,
         sobrenome: sobrenomeInput.value,
         endereco: enderecoInput.value,
         telefone: telefoneInput.value
       };
-      alert("Contato incluído:\n" + JSON.stringify(contato, null, 2));
+      contatos.push(novoContato);
+      indiceAtual = contatos.length - 1;
+      alert("Contato incluído!");
     });
 
     btnEditar.addEventListener("click", () => {
@@ -68,33 +95,66 @@
     });
 
     btnSalvar.addEventListener("click", () => {
-      contato = {
-        nome: nomeInput.value,
-        sobrenome: sobrenomeInput.value,
-        endereco: enderecoInput.value,
-        telefone: telefoneInput.value
-      };
-      alert("Alterações salvas:\n" + JSON.stringify(contato, null, 2));
+      if (indiceAtual >= 0) {
+        contatos[indiceAtual] = {
+          nome: nomeInput.value,
+          sobrenome: sobrenomeInput.value,
+          endereco: enderecoInput.value,
+          telefone: telefoneInput.value
+        };
+        alert("Contato atualizado.");
+      } else {
+        alert("Nenhum contato selecionado para salvar.");
+      }
     });
 
     btnCancelar.addEventListener("click", () => {
-      nomeInput.value = "";
-      sobrenomeInput.value = "";
-      enderecoInput.value = "";
-      telefoneInput.value = "";
+      limparFormulario();
       alert("Edição cancelada.");
     });
 
     btnExcluir.addEventListener("click", () => {
-      if (confirm("Deseja realmente excluir o contato?")) {
-        nomeInput.value = "";
-        sobrenomeInput.value = "";
-        enderecoInput.value = "";
-        telefoneInput.value = "";
-        contato = {};
+      if (indiceAtual >= 0 && confirm("Deseja realmente excluir este contato?")) {
+        contatos.splice(indiceAtual, 1);
+        if (contatos.length === 0) {
+          indiceAtual = -1;
+          limparFormulario();
+        } else {
+          indiceAtual = Math.max(0, indiceAtual - 1);
+          preencherFormulario(contatos[indiceAtual]);
+        }
         alert("Contato excluído.");
       }
     });
+
+    btnPrimeiro.addEventListener("click", () => {
+      if (contatos.length > 0) {
+        indiceAtual = 0;
+        preencherFormulario(contatos[indiceAtual]);
+      }
+    });
+
+    btnAnterior.addEventListener("click", () => {
+      if (indiceAtual > 0) {
+        indiceAtual--;
+        preencherFormulario(contatos[indiceAtual]);
+      }
+    });
+
+    btnProximo.addEventListener("click", () => {
+      if (indiceAtual < contatos.length - 1) {
+        indiceAtual++;
+        preencherFormulario(contatos[indiceAtual]);
+      }
+    });
+
+    btnUltimo.addEventListener("click", () => {
+      if (contatos.length > 0) {
+        indiceAtual = contatos.length - 1;
+        preencherFormulario(contatos[indiceAtual]);
+      }
+    });
   </script>
-  </body>
+</body>
 </html>
+
